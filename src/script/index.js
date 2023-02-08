@@ -1,6 +1,6 @@
 "use strict";
 
-let them = document.querySelector("#them");
+let them = document.querySelector(".them");
 let header = document.querySelector("header");
 let select = document.querySelector("#region");
 let searchInput = document.querySelector("#search");
@@ -67,13 +67,21 @@ function renderCards(cards) {
     />
     </a>
     <div class="p-6 pb-7">
-      <h5 class="text-gray-900 text-xl font-extrabold mb-2 card_title cursor-pointer" data-isname=${element.name}>
+      <h5 class="text-gray-900 text-xl font-extrabold mb-2 card_title cursor-pointer" data-isname=${element.name
+        .split(" ")
+        .join("_")}>
         ${element.name}
       </h5>
       <ul class="flex flex-col gap-2">
-        <li class="text-sm"><strong class="font-semibold">Population: </strong>${element.population}</li>
-        <li class="text-sm"><strong class="font-semibold">Region: </strong>${element.region}</li>
-        <li class="text-sm"><strong class="font-semibold">Capital: </strong>${element.capital}</li>
+        <li class="text-sm"><strong class="font-semibold">Population: </strong>${
+          element.population
+        }</li>
+        <li class="text-sm"><strong class="font-semibold">Region: </strong>${
+          element.region
+        }</li>
+        <li class="text-sm"><strong class="font-semibold">Capital: </strong>${
+          element.capital
+        }</li>
       </ul>
     </div>
     `;
@@ -83,7 +91,7 @@ function renderCards(cards) {
       "rounded-[5px] shadow-lg bg-white max-w-sm w-[264px] h-[336px]",
       content
     );
-
+    console.log(element.name.split(" ").join("_"));
     wrapperCards.append(card);
   });
 }
@@ -147,9 +155,9 @@ searchInput.addEventListener("keyup", (e) => {
 wrapperCards.addEventListener("click", (e) => {
   if (e.target.classList.contains("card_title")) {
     const isname = e.target.getAttribute("data-isname");
+    console.log(isname);
     localStorage.setItem("isname", isname);
 
-    window.open("./country.html")
-    
+    window.location.replace("./country.html");
   }
 });

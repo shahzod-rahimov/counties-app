@@ -1,4 +1,4 @@
-#them {
+.them {
   appearance: none !important;
   width: 26px;
   height: 26px;
@@ -6,7 +6,7 @@
   /* border: 1px solid #000; */
 }
 
-#them::after {
+.them::after {
   content: "";
   display: block;
   width: 26px;
@@ -17,7 +17,7 @@
   position: absolute;
 }
 
-#them:checked::after {
+.them:checked::after {
   content: "";
   display: block;
   width: 26px;
